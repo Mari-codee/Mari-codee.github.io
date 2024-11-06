@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Descargar Documento</title>
+    <link rel="icon" type="image/png" href="img/favicon.png">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f3f3f3;
+            padding: 50px;
+        }
+        h2 {
+            color: #333;
+        }
+        p {
+            color: #555;
+        }
+        .download-button {
+            display: inline-block;
+            padding: 15px 25px;
+            font-size: 18px;
+            color: #fff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+        .download-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h2>¡Gracias por visitar nuestra página!</h2>
+    <p>Si te interesó nuestra página e información, puedes adquirir el documento abajo.</p>
+    <a href="#" class="download-button" onclick="descargarWord()">Descargar Documento</a>
+
+    <script>
+        function descargarWord() {
+            const contenidoWord = `Aquí puedes agregar el contenido del documento en formato texto.`;
+            const blob = new Blob(['\ufeff', contenidoWord], { type: 'application/msword' });
+            const enlace = document.createElement("a");
+            enlace.href = URL.createObjectURL(blob);
+            enlace.download = "documento.doc";
+            enlace.click();
+            URL.revokeObjectURL(enlace.href);
+        }
+    </script>
+</body>
+</html>
